@@ -1,0 +1,22 @@
+{% extends 'contact/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1 class="text-center mb-4">Contact List</h1>
+  <div class="row">
+    {% for contact in contacts %}
+    <div class="col-md-6 col-lg-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">{{ contact.first_name }} {{ contact.last_name }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted"><a href="{% url 'contact-detail' contact.id %}">{{ contact.surname }}</a></h6>
+          <p class="card-text">Phone: {{ contact.phone }}</p>
+          <p class="card-text">Email: {{ contact.email }}</p>
+          <p class="card-text"><small class="text-muted">Added on {{ contact.upload_date|date:"F d, Y" }}</small></p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

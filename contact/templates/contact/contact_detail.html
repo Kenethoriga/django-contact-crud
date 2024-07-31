@@ -1,0 +1,29 @@
+{% extends 'contact/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg">
+        <div class="card-header">
+          <h4>{{ contact.first_name }} {{ contact.last_name }}</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><strong>Surname:</strong> {{ contact.surname }}</p>
+          <p class="card-text"><strong>Phone:</strong> {{ contact.phone }}</p>
+          <p class="card-text"><strong>Email:</strong> {{ contact.email }}</p>
+        </div>
+        <div class="card-footer text-muted">
+          <small class="text-muted">{{ contact.upload_date|date:"F d, Y" }}</small>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="{% url 'contact-update' object.id %}" class="btn btn-primary">Update</a>
+                <a href="{% url 'contact-delete' object.id %}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
